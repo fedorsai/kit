@@ -1,0 +1,38 @@
+<!DOCUMENT html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			body {margin: 0}
+			rect {
+			fill: white;
+			fill-opacity: .50;
+			stroke: black;
+			stroke-opacity: .80;
+			stroke-width: 1;
+			}			
+		</style>
+		<script src="d3.min.js" charset="utf-8"></script>
+	</head>
+	<body>
+		<svg width="800" height="600" viewBox="0 0 800 600">
+
+		</svg>
+		<script>
+			var webSide = 10; //сторона сетки в клетках
+			var squareSide = 26; // сторона клетки в пикселях
+			var svg = d3.select('svg');
+			var rd = new Array(webSide*webSide);			
+			var rects = svg.selectAll('rect').data(rd);
+			
+			rects.enter().append('rect')
+				.attr('x', function(d, i) {return i%webSide * squareSide;})
+				.attr('y', function(d, i) {return Math.floor(i/webSide) * squareSide;})
+				.attr('width', function(d, i) {return squareSide;})
+				.attr('height', function(d, i) {return squareSide;})
+				//.style('fill', function(d, i) {return d3.rgb(Math.floor(i/webSide) * 15, 150, 255);});
+
+		</script>
+	</body>	
+</html>
